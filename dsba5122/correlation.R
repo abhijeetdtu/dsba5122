@@ -5,7 +5,7 @@ correlationUI <- function(id){
   # Show a plot of the generated distribution
   fluidPage(
     fluidRow(
-      column(4 ,offset=4 ,tags$h1("Variable Correlations"))
+      column(8,tags$h3("Variable Correlations with Cancellations"))
     ),
     
     fluidRow(
@@ -32,8 +32,11 @@ correlationServer <- function(id){
         
         g <- ggplot(cor_tri %>% filter(Var1 == "is_canceled") , aes(x=Var1 , y=Var2 , fill=value)) +
               geom_tile() + 
-              scale_fill_gradient2(low="#e76f51" ,mid="#e5e5e5", high="#2a9d8f" , ,limits=c(-1,1))
-              theme(axis.text.x = element_text(angle=45))
+              scale_fill_gradient2(low="#e76f51" ,mid="#e5e5e5", high="#2a9d8f" ,limits=c(-1,1) , name="Correlation \n Coefficient") +
+              xlab("Cancellation")+
+              ylab("Variable Name")+
+              theme(axis.text.x  = element_blank()) + 
+              theme_light() 
         g
       
     })

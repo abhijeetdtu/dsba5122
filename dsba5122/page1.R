@@ -5,7 +5,7 @@ page1UI <- function(id){
     # Show a plot of the generated distribution
     fluidPage(
         fluidRow(
-          column(8 ,offset=3 ,tags$h1("Deeper Dive Into Cancellations"))
+          column(8,tags$h1("Deeper Dive Into Cancellations"))
         ),
         fluidRow(
           column(2,uiOutput(NS(id , "segment"))),
@@ -55,7 +55,13 @@ page1Server <- function(id){
             geom_bar(width = 1, stat = "identity")+
             geom_label_repel(position=position_stack(vjust = 0.5)) + 
             coord_polar("y", start=0) + 
-            scale_fill_discrete(guide=F)
+            scale_fill_discrete(guide=F) +
+            ylab("Proportion Cancelled") + 
+            theme_bw()+
+            theme(axis.text = element_blank(),
+                  axis.ticks = element_blank(),
+                  panel.grid  = element_blank())
+      
       g
       
     })
@@ -71,7 +77,14 @@ page1Server <- function(id){
             summarize(counts = sum(is_canceled)) %>%
             ggplot( aes_string(x="arrival_date_week_number" ,y="counts" , group=input$segment , color=input$segment ))+
             geom_line() +
-            facet_wrap(~ arrival_date_year ) 
+            facet_wrap(~ arrival_date_year ) +
+            theme_light() + 
+            xlab("Arrival Week Number") +
+            ylab("Count of Cancelled Bookings") +
+            ggtitle("Total Cancelled Bookings Over Each Year")+
+            theme(panel.grid.major.x = element_blank(),
+                  panel.grid.minor.x = element_blank(),
+                  legend.position = "left")
       g
       
     })
