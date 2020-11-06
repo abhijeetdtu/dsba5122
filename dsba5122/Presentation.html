@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>TidyTuesday Midterm Project</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Mansi Shah, Abhijeet Pokhriyal, Lauren Cook, &amp; Ryon Ripper" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# TidyTuesday Midterm Project
+## <br/>Dataset available at <a href="https://bit.ly/3l6Lh4M" class="uri">https://bit.ly/3l6Lh4M</a> <br/> TidyTuesday available at <a href="https://bit.ly/3p2fNPz" class="uri">https://bit.ly/3p2fNPz</a>
+### Mansi Shah, Abhijeet Pokhriyal, Lauren Cook, &amp; Ryon Ripper
+### November 9th, 2020
+
+---
+
+class: center, middle
+###Tidy Tusday Submission
+
+![an image caption Source: Tidy Tuesday Submission.](original submission_3.jpg)
+
+
+
+???
+
+Source credit: [Maggie Wanjiru](https://twitter.com/magwanjiru/status/1227327611409510400/photo/1)
+
+---
+# Dataset &amp; TidyTuesday Selection
+
+
+* There are 119390 observations and 32 variables. It captures data such as:
+
+   + The hotel type (City hotel or a Resort hotel)
+   
+   + If the the booking was canceled
+   
+   + How many adults and children 
+
+* Maggie Wanjiru the creator of this visual used a stacked bar chart to represent the data. She broke the data by year and by hotel type. She used gray to represent the percentage of bookings that were not canceled, while red represented canceled bookings.
+
+---
+# Critiques
+
+##What are the good design choices?
+* A stacked bar chart was a good choice to represent this data
+
+    + It clearly visualizes the data as proportions of a whole
+    
+    + Works well for the visualization of many sets of proportions Separating the cancellations by type of hotel is beneficial to see if a particular hotel is doing better than the other
+    
+* There are labels for the x and y axis and a title above the visual
+
+* It showcases cancellations for 3 years side-by-side
+
+* The percentages of whether or not a booking was canceled is within each stacked bar
+
+* There are no grid lines to clutter the information being presented
+
+---
+#Critiques cont.
+
+##What are ways to improve the selected TidyTuesday entry?
+* Include a legend to the side to showcase what the colors red and gray convey 
+
+    + (instead of writing it underneath the title of the visual)
+    
+* Update the x-axis and y-axis labels to be more descriptive
+
+* Increase the size of years above the stacked bar charts (it’s legible, however it would be less strain for viewers)
+
+* Flipping the stacked bar chart to be horizontal to see if that would be more visually appealing
+
+* Use a better color palette as the current choice is harsh on the eyes
+
+---
+# Modified Selection : Screenshots/Live Demo
+
+![an image caption Source: Modified visual screenshot.](Improved_Graph.jpg)
+
+---
+
+class: center, middle
+#Questions / Comments?
+![an image caption Source: thank you gif.](thank_you.gif)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
