@@ -12,6 +12,7 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(ggrepel)
+library(plotrix)
 
 df <- readr::read_csv('hotels.csv')
 
@@ -20,6 +21,9 @@ source("orig_improv.R")
 source("page1.R")
 source("correlation.R")
 source("tree.R")
+source("MonthlyHotelBookings.R")
+source("AverageMonthlyHotelBookings.R")
+
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -27,9 +31,12 @@ ui <- fluidPage(
     navbarPage("Group Project",
                tabPanel("Original", origUI("orig")),
                tabPanel("Improved", origImprovUI("origimprov")),
-               tabPanel("Segment", page1UI("page1")),
+               tabPanel("MonthlyBookings", MonthlyBookingsUI("MonthlyHotelBookings")),
+               tabPanel("AverageMonthlyBookings", AverageMonthlyBookingsUI("AverageMonthlyHotelBookings")),
                tabPanel("Correlation", correlationUI("correlation")),
+               tabPanel("Segment", page1UI("page1")),
                tabPanel("Tree", decisionTreeUI("dtree"))
+                             
     )
     
     # Sidebar with a slider input for number of bins 
@@ -43,6 +50,9 @@ server <- function(input, output) {
     origServer("orig")
     origImprovServer("origimprov")
     decisionTreeServer("dtree")
+    MonthlyBookingsServer("MonthlyHotelBookings")
+    AverageMonthlyBookingsServer("AverageMonthlyHotelBookings")
+    
 }
 
 # Run the application 
