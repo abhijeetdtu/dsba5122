@@ -36,7 +36,7 @@ CancellationServer <- function(id){
     
     
     output$segment <- renderUI({
-      selectInput(NS(id , "segment"), "Segment By" , c("hotel" , "customer_type" , "deposit_type"))
+      selectInput(NS(id , "segment"), "Segment By" , c("hotel" , "customer_type" , "deposit_type","market_segment","assigned_room_type"))
     })
     
     output$count_canceled <- renderPlot({
