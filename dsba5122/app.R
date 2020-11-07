@@ -23,6 +23,7 @@ source("correlation.R")
 source("tree.R")
 source("MonthlyHotelBookings.R")
 source("AverageMonthlyHotelBookings.R")
+source("CancellationsvsRest.R")
 
 
 # Define UI for application that draws a histogram
@@ -35,6 +36,7 @@ ui <- fluidPage(
                tabPanel("AverageMonthlyBookings", AverageMonthlyBookingsUI("AverageMonthlyHotelBookings")),
                tabPanel("Correlation", correlationUI("correlation")),
                tabPanel("Segment", page1UI("page1")),
+               tabPanel("Segment2", cancellationUI("page2")),
                tabPanel("Tree", decisionTreeUI("dtree"))
                              
     )
@@ -46,6 +48,7 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
     page1Server("page1")
+    CancellationServer("page2")
     correlationServer("correlation")
     origServer("orig")
     origImprovServer("origimprov")
