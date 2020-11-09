@@ -57,7 +57,8 @@ origImprovServer <- function(id){
               plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
               plot.subtitle = element_text(size=12, face = "italic", hjust = 0.5),
               plot.caption = element_text(size = 8, face = "italic", color = "blue"),
-              axis.text.x = element_text(size=15 , face="bold" , color=alpha('black', 0.5)))
+              axis.text.x = element_text(size=15 , face="bold" , color=alpha('black', 0.5)),
+              strip.text = element_text(size = 14))
       
     })
   })
