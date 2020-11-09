@@ -2,7 +2,7 @@
 title: "TidyTuesday Midterm Project"
 author: "Mansi Shah, Abhijeet Pokhriyal, Lauren Cook, & Ryon Ripper"
 date: "November 9th, 2020"
-subtitle: "<br/>Dataset available at https://bit.ly/3l6Lh4M <br/> TidyTuesday available at https://bit.ly/3p2fNPz"
+subtitle: "<br/>Dataset available at https://bit.ly/3l6Lh4M <br/> TidyTuesday available at https://bit.ly/3p2fNPz <br/>Shiny Dashboard at https://abhijeetdtu.shinyapps.io/dsba5122/"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -71,12 +71,12 @@ Source credit: [Maggie Wanjiru](https://twitter.com/magwanjiru/status/1227327611
 
 * Increase the size of years above the stacked bar charts (it’s legible, however it would be less strain for viewers)
 
-* Flipping the stacked bar chart to be horizontal to see if that would be more visually appealing
-
 * Use a better color palette as the current choice is harsh on the eyes
 
 ---
-# Modified Selection : Screenshots/Live Demo
+# Modified Selection : Live Demo
+
+Shiny Dashboard at https://abhijeetdtu.shinyapps.io/dsba5122/
 
 ![an image caption Source: Modified visual screenshot.](Improved_Graph.jpg)
 
