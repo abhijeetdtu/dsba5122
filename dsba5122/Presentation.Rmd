@@ -85,5 +85,64 @@ Shiny Dashboard at https://abhijeetdtu.shinyapps.io/dsba5122/
 class: center, middle
 #Questions / Comments?
 ![an image caption Source: thank you gif.](thank_you.gif)
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Original visual.](original_submission.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Improved visual by hotel.](improved_hotel.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Improved visual by year.](improved_year.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Average Monthly Bookings.](averagemonthlybookings.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Monthly Bookings.](monthlybookings.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Correlation.](correlation.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Segment by Hotel.](segment_hotel.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Segment by Customer Type.](segment_customer_type.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Segment by Deposit Type.](segment_deposit_type.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Segment by Market Segment.](segment_market.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Segment by Room Type.](segment_room.JPG)
+
+---
+#Appendix - Shiny Dashboard Screenshots
+![an image caption Source: Decision Tree.](decisiontree.JPG)
+
+---
+#Links and Resources
+
+* Dataset available at https://bit.ly/3l6Lh4M <br/> 
+
+* TidyTuesday available at https://bit.ly/3p2fNPz 
+
+* Shiny Dashboard at https://abhijeetdtu.shinyapps.io/dsba5122/
+
+
+
 
 
