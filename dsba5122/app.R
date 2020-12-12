@@ -15,6 +15,7 @@ library(ggrepel)
 library(plotrix)
 library(plotly)
 library(shinythemes)
+library(stringr)
 
 df <- readr::read_csv('hotels.csv')
 
@@ -28,6 +29,9 @@ source("midterm_pages/AverageMonthlyHotelBookings.R")
 source("midterm_pages/CancellationsvsRest.R")
 
 
+source("final_pages/scatter.R")
+source("final_pages/adr_regression.R")
+
 # Define UI for application that draws a histogram
 ui <- fluidPage(
     theme = shinythemes::shinytheme("sandstone"),
@@ -40,7 +44,9 @@ ui <- fluidPage(
                    tabPanel("Correlation", correlationUI("correlation")),
                    #tabPanel("Segment", page1UI("page1")),
                    tabPanel("Segment", cancellationUI("page2")),
-                   tabPanel("Tree", decisionTreeUI("dtree")))
+                   tabPanel("Tree", decisionTreeUI("dtree"))),
+               tabPanel("Scatter", scatterUI("scatter")),
+               tabPanel("ADR", adrRegressionUI("adr_regression"))
                              
     )
     
@@ -58,7 +64,8 @@ server <- function(input, output) {
     decisionTreeServer("dtree")
     MonthlyBookingsServer("MonthlyHotelBookings")
     AverageMonthlyBookingsServer("AverageMonthlyHotelBookings")
-    
+    scatterServer("scatter")
+    adrRegressionUIServer("adr_regression")
 }
 
 # Run the application 
