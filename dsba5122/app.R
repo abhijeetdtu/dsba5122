@@ -45,7 +45,7 @@ ui <- fluidPage(
                    #tabPanel("Segment", page1UI("page1")),
                    tabPanel("Segment", cancellationUI("page2")),
                    tabPanel("Tree", decisionTreeUI("dtree"))),
-               tabPanel("Scatter", scatterUI("scatter")),
+               #tabPanel("Scatter", scatterUI("scatter")),
                tabPanel("ADR", adrRegressionUI("adr_regression"))
                              
     )
