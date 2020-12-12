@@ -16,6 +16,10 @@ library(plotrix)
 library(plotly)
 library(shinythemes)
 library(stringr)
+library(packcircles)
+library(ggplot2)
+library(viridis)
+library(ggiraph)
 
 df <- readr::read_csv('hotels.csv')
 
@@ -29,7 +33,7 @@ source("midterm_pages/AverageMonthlyHotelBookings.R")
 source("midterm_pages/CancellationsvsRest.R")
 
 
-source("final_pages/scatter.R")
+source("final_pages/company_adr.R")
 source("final_pages/adr_regression.R")
 
 # Define UI for application that draws a histogram
@@ -45,7 +49,7 @@ ui <- fluidPage(
                    #tabPanel("Segment", page1UI("page1")),
                    tabPanel("Segment", cancellationUI("page2")),
                    tabPanel("Tree", decisionTreeUI("dtree"))),
-               #tabPanel("Scatter", scatterUI("scatter")),
+               tabPanel("Company Wise ADR", companyADRUI("company_adr")),
                tabPanel("ADR", adrRegressionUI("adr_regression"))
                              
     )
@@ -64,7 +68,7 @@ server <- function(input, output) {
     decisionTreeServer("dtree")
     MonthlyBookingsServer("MonthlyHotelBookings")
     AverageMonthlyBookingsServer("AverageMonthlyHotelBookings")
-    scatterServer("scatter")
+    companyADRServer("company_adr")
     adrRegressionUIServer("adr_regression")
 }
 
