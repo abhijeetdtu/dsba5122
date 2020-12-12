@@ -46,7 +46,7 @@ origImprovServer <- function(id){
         #+ theme(legend.title = element_text("Canceled ?"))
       )
       
-       g+ 
+      g <- g+ 
         theme_classic() +
         labs(title = "Hotels Booking Cancellation Percentage",
              #subtitle = "~booking was canceled (red) or not (gray)~",
@@ -60,6 +60,7 @@ origImprovServer <- function(id){
               axis.text.x = element_text(size=15 , face="bold" , color=alpha('black', 0.5)),
               strip.text = element_text(size = 14))
       
+      g
     })
   })
   

@@ -13,31 +13,34 @@ library(dplyr)
 library(tidyr)
 library(ggrepel)
 library(plotrix)
+library(plotly)
+library(shinythemes)
 
 df <- readr::read_csv('hotels.csv')
 
 source("orig.R")
 source("orig_improv.R")
-source("page1.R")
-source("correlation.R")
-source("tree.R")
-source("MonthlyHotelBookings.R")
-source("AverageMonthlyHotelBookings.R")
-source("CancellationsvsRest.R")
+source("midterm_pages/page1.R")
+source("midterm_pages/correlation.R")
+source("midterm_pages/tree.R")
+source("midterm_pages/MonthlyHotelBookings.R")
+source("midterm_pages/AverageMonthlyHotelBookings.R")
+source("midterm_pages/CancellationsvsRest.R")
 
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-    
+    theme = shinythemes::shinytheme("sandstone"),
     navbarPage("Group Project",
                tabPanel("Original", origUI("orig")),
                tabPanel("Improved", origImprovUI("origimprov")),
-               tabPanel("MonthlyBookings", MonthlyBookingsUI("MonthlyHotelBookings")),
-               tabPanel("AverageMonthlyBookings", AverageMonthlyBookingsUI("AverageMonthlyHotelBookings")),
-               tabPanel("Correlation", correlationUI("correlation")),
-               tabPanel("Segment", page1UI("page1")),
-               tabPanel("Segment2", cancellationUI("page2")),
-               tabPanel("Tree", decisionTreeUI("dtree"))
+               navbarMenu("Midterm",
+                   tabPanel("AverageMonthlyBookings", AverageMonthlyBookingsUI("AverageMonthlyHotelBookings")),
+                   tabPanel("MonthlyBookings", MonthlyBookingsUI("MonthlyHotelBookings")),
+                   tabPanel("Correlation", correlationUI("correlation")),
+                   #tabPanel("Segment", page1UI("page1")),
+                   tabPanel("Segment", cancellationUI("page2")),
+                   tabPanel("Tree", decisionTreeUI("dtree")))
                              
     )
     

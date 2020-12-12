@@ -62,7 +62,7 @@ page1Server <- function(id){
                   axis.ticks = element_blank(),
                   panel.grid  = element_blank())
       
-      g
+      ggplotly(g)
       
     })
     
