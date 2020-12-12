@@ -10,6 +10,7 @@ adrRegressionUI <- function(id){
       column(8,fluidRow(
         tags$h3("Average Daily Rate Regression")
         ,"Average Daily Rate as defined by dividing the sum of all lodging transactions by the total number of staying nights")
+        ,tags$h4("Based on Results for : lm(adr ~ . )")
       )
     ),
     fluidRow(tags$hr()),
