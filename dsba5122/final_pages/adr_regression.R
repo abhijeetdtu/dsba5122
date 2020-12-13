@@ -43,7 +43,7 @@ adrRegressionUIServer <- function(id){
         ggplot(df
                ,aes(x=variable, y=estimate , fill= estimate > 0)) +
           geom_col() + 
-          scale_fill_discrete(guide=F) +
+          scale_fill_manual(guide=F , values=c("#f4a261" , "#2a9d8f")) +
           coord_flip() +
           theme_light() +
           ggtitle(title) +

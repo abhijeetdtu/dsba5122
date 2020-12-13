@@ -50,9 +50,10 @@ ui <- fluidPage(
                    #tabPanel("Segment", page1UI("page1")),
                    tabPanel("Segment", cancellationUI("page2")),
                    tabPanel("Tree", decisionTreeUI("dtree"))),
+               tabPanel("repeatcancel", repeatcancelUI("repeatcancel")),
                tabPanel("Company Wise ADR", companyADRUI("company_adr")),
-               tabPanel("ADR", adrRegressionUI("adr_regression")),
-               tabPanel("repeatcancel", repeatcancelUI("repeatcancel"))
+               tabPanel("ADR", adrRegressionUI("adr_regression"))
+               
                              
     )
     
