@@ -1,4 +1,4 @@
-![image](https://i.imgur.com/2vPpHe6.gif)
+![image](https://i.imgur.com/4dnK7v9.gif)
 # Group Project DSBA 5122
 
 In this project we build a `shiny` app to help explore [this](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-02-11/readme.md) `tidy tuesday` dataset.
