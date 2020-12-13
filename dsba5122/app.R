@@ -43,18 +43,23 @@ ui <- fluidPage(
     navbarPage("Group Project",
                tabPanel("Original", origUI("orig")),
                tabPanel("Improved", origImprovUI("origimprov")),
-               navbarMenu("Midterm",
-                   tabPanel("AverageMonthlyBookings", AverageMonthlyBookingsUI("AverageMonthlyHotelBookings")),
-                   tabPanel("MonthlyBookings", MonthlyBookingsUI("MonthlyHotelBookings")),
-                   tabPanel("Correlation", correlationUI("correlation")),
-                   #tabPanel("Segment", page1UI("page1")),
-                   tabPanel("Segment", cancellationUI("page2")),
-                   tabPanel("Tree", decisionTreeUI("dtree"))),
-               tabPanel("repeatcancel", repeatcancelUI("repeatcancel")),
-               tabPanel("Company Wise ADR", companyADRUI("company_adr")),
-               tabPanel("ADR", adrRegressionUI("adr_regression"))
-               
-                             
+               navbarMenu("Exploratory Analysis",
+                          
+                      "Cancellations",
+                      tabPanel("AverageMonthlyBookings", AverageMonthlyBookingsUI("AverageMonthlyHotelBookings")),
+                      tabPanel("MonthlyBookings", MonthlyBookingsUI("MonthlyHotelBookings")),
+                      tabPanel("Correlation", correlationUI("correlation")),
+                      #tabPanel("Segment", page1UI("page1")),
+                      tabPanel("Segment", cancellationUI("page2")),
+                      tabPanel("repeatcancel", repeatcancelUI("repeatcancel")),
+                      "--------",
+                      "Average Daily Rate",
+                      tabPanel("Company Wise ADR", companyADRUI("company_adr"))
+               ),
+               navbarMenu("Analytical Models",
+                    tabPanel("Tree", decisionTreeUI("dtree")),
+                    tabPanel("Regression", adrRegressionUI("adr_regression"))
+               )
     )
     
     # Sidebar with a slider input for number of bins 

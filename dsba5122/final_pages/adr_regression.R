@@ -61,6 +61,10 @@ adrRegressionUIServer <- function(id){
     coefs <- coefs %>% filter(pval < 0.05)
     coefs$variable <- rownames(coefs)
     
+    get_coefs <- function(){
+      
+    }
+    
     output$room_type <- renderPlot({
       room_type_coef <- coefs %>% filter(grepl("assigned_room",variable))
       room_type_coef$variable <- str_replace(room_type_coef$variable , "assigned_room_type" , "")
