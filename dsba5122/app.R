@@ -35,6 +35,7 @@ source("midterm_pages/CancellationsvsRest.R")
 
 source("final_pages/company_adr.R")
 source("final_pages/adr_regression.R")
+source("final_pages/repeatcancel.R")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -50,7 +51,8 @@ ui <- fluidPage(
                    tabPanel("Segment", cancellationUI("page2")),
                    tabPanel("Tree", decisionTreeUI("dtree"))),
                tabPanel("Company Wise ADR", companyADRUI("company_adr")),
-               tabPanel("ADR", adrRegressionUI("adr_regression"))
+               tabPanel("ADR", adrRegressionUI("adr_regression")),
+               tabPanel("repeatcancel", repeatcancelUI("repeatcancel"))
                              
     )
     
@@ -70,6 +72,7 @@ server <- function(input, output) {
     AverageMonthlyBookingsServer("AverageMonthlyHotelBookings")
     companyADRServer("company_adr")
     adrRegressionUIServer("adr_regression")
+    repeatcancelServer("repeatcancel")
 }
 
 # Run the application 
