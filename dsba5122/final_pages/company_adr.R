@@ -65,6 +65,7 @@ companyADRServer <- function(id){
         ggplot(company_trend,
                aes(x=arrival_date_month , y=mean_adr , fill=arrival_date_month)) +
           geom_boxplot()+ 
+          ggtitle("When do Companies spend more ?") + 
           scale_fill_discrete(guide=F)+
           theme_minimal()
       )
