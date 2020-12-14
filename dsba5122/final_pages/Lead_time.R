@@ -45,11 +45,11 @@ LeadTimeServer <- function(id){
       new_df = distinct(new_df)
       # Basic line plot with points
       g <- ggplot(data=new_df, aes(x=bins, y=Percent_canceled , group=1)) +
-        geom_point(color="blue")+labs(title = "Lead Time vs Cancellations")+
+        geom_point(color="blue")+geom_col(width = 0.1)+labs(title = "Lead Time vs Cancellations")+
         theme(axis.text.x = element_text(angle = 90)) +
-        geom_line()+
+        
         ylab(label="Percent Canceled") + xlab(label="Lead Time") + 
-        scale_x_discrete(labels=seq(0, 750, by=X))
+        scale_x_discrete(labels=seq(X, 750+X, by=X))
       g
     })
     
