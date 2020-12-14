@@ -19,7 +19,7 @@ LeadTimeServer <- function(id){
   
   moduleServer(id, function(input, output, session) {
     output$segment <- renderUI({
-      selectInput(NS(id , "segment"), "Lead Time Bin Size (in days)" , choices=list(7 , 30,90,365) , selected=7)
+      selectInput(NS(id , "segment"), "Lead Time Bin Size (in days)" , choices=list(7 , 30,90,365) , selected=90)
     })
     
     output$plot <- renderPlotly({
@@ -36,10 +36,11 @@ LeadTimeServer <- function(id){
         geom_line(aes(y=cum_sum) , group=1 ,  linetype='dotted') + 
         labs(title = "Each Bin's Share of Total Cancelations")+
         #annotate(geom="text",x=levels(df$bins)[-1] , y=110 ,label="Cum-Sum")+
+        theme_minimal()+
         theme(axis.text.x = element_text(angle = 90)) +
         ylab(label="Percent") + 
         xlab(label="Lead Time") +
-        theme_minimal()
+        
       g
     })
     
