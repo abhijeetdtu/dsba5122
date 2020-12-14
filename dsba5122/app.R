@@ -36,6 +36,7 @@ source("midterm_pages/CancellationsvsRest.R")
 source("final_pages/company_adr.R")
 source("final_pages/adr_regression.R")
 source("final_pages/repeatcancel.R")
+source("final_pages/Lead_time.R")
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -54,7 +55,8 @@ ui <- fluidPage(
                       tabPanel("repeatcancel", repeatcancelUI("repeatcancel")),
                       "--------",
                       "Average Daily Rate",
-                      tabPanel("Company Wise ADR", companyADRUI("company_adr"))
+                      tabPanel("Company Wise ADR", companyADRUI("company_adr")),
+                      tabPanel("Lead Time vs Cancellations", LeadTimeUI("LeadTime"))
                ),
                navbarMenu("Analytical Models",
                     tabPanel("Tree", decisionTreeUI("dtree")),
@@ -79,6 +81,7 @@ server <- function(input, output) {
     companyADRServer("company_adr")
     adrRegressionUIServer("adr_regression")
     repeatcancelServer("repeatcancel")
+    LeadTimeServer("LeadTime")
 }
 
 # Run the application 
