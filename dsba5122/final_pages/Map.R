@@ -1,0 +1,84 @@
+# These are the datapoints where there is no adults, children and babies so we will not consider these points
+library(plotly)
+library(countrycode)
+MapUI <- function(id){
+  # Show a plot of the generated distribution
+  fluidPage(
+    fluidRow(
+      column(2,uiOutput(NS(id,'hotelsegment')))
+    ),
+    fluidRow(
+      column(2,uiOutput(NS(id,'bookingssegment')))
+    ),
+    fluidRow(
+      column(12,plotlyOutput(NS(id,'plot')))
+    )
+  )
+}
+MapServer <- function(id){
+  moduleServer(id, function(input, output, session) {
+    output$hotelsegment <- renderUI({
+      selectInput(NS(id , "hotelsegment"), "Hotel" , c("All","City Hotel","Resort Hotel"))
+    })
+    output$bookingssegment <- renderUI({
+      selectInput(NS(id , "bookingssegment"), "Booking Type" , c("All","Only Cancelled","Only Non-Cancelled"))
+    })  
+    output$plot <- renderPlotly({
+      df <- readr::read_csv('hotels.csv')
+      hotel_data <- df
+      
+      if(input$hotelsegment=='City Hotel'){
+        sub_hotel_data <-hotel_data[hotel_data$hotel == "City Hotel",]
+        
+      }
+      else if(input$hotelsegment=='Resort Hotel'){
+        sub_hotel_data <-hotel_data[hotel_data$hotel == "Resort Hotel",]
+      }
+      else {
+        sub_hotel_data <- hotel_data
+        
+      } 
+     
+      if(input$bookingssegment=='Only Cancelled'){
+        sub_hotel_data <-sub_hotel_data[sub_hotel_data$is_canceled == 1,]
+        
+      }
+      else if(input$bookingssegment=='Only Non-cancelled'){
+        sub_hotel_data <-sub_hotel_data[sub_hotel_data$is_canceled == 0,]
+        
+      }
+      else {
+        (input$bookingssegment=='All')
+        sub_hotel_data <- sub_hotel_data
+        
+      } 
+      
+      #sub_hotel_data <- sub_hotel_data[sub_hotel_data$is_canceled == 1,]
+      # Subset the data to include the countries which has more than 2000 reservation request
+      hotelbycountry <- sub_hotel_data %>%
+        
+        group_by(country) %>% summarise(n = n())
+      
+      library(countrycode)
+      hotelbycountry$county_name <- countrycode(hotelbycountry$country,
+                                                origin = "iso3c",
+                                                destination = "country.name")
+      
+      p <- plot_ly(
+        hotelbycountry,
+        type = "choropleth",
+        locations = hotelbycountry$country,
+        z = hotelbycountry$n,
+        text = hotelbycountry$county_name,
+        colorscale = "Reds",
+        title = "Total Bookings"
+      )
+      g <- layout(p, title = 'Bookings by Countries in World Map',titlefont=list(size=17))
+      g
+    
+    })
+  
+  
+ })
+}
+    
