@@ -20,6 +20,7 @@ library(packcircles)
 library(ggplot2)
 library(viridis)
 library(ggiraph)
+library(countrycode)
 
 df <- readr::read_csv('hotels.csv')
 
@@ -38,6 +39,8 @@ source("final_pages/adr_regression.R")
 source("final_pages/repeatcancel.R")
 source("final_pages/Lead_time.R")
 source("final_pages/Map.R")
+
+
 # Define UI for application that draws a histogram
 ui <- fluidPage(
     theme = shinythemes::shinytheme("sandstone"),
@@ -45,16 +48,17 @@ ui <- fluidPage(
                tabPanel("Original", origUI("orig")),
                tabPanel("Improved", origImprovUI("origimprov")),
                navbarMenu("Exploratory Analysis",
-                          
+                      "Bookings",
+                      tabPanel("Bookings by Country", MapUI("Map")),
+                      tabPanel("Average Monthly Bookings", AverageMonthlyBookingsUI("AverageMonthlyHotelBookings")),
+                      tabPanel("Monthly Bookings", MonthlyBookingsUI("MonthlyHotelBookings")),
+                      "---------",
                       "Cancellations",
-                      tabPanel("AverageMonthlyBookings", AverageMonthlyBookingsUI("AverageMonthlyHotelBookings")),
-                      tabPanel("MonthlyBookings", MonthlyBookingsUI("MonthlyHotelBookings")),
                       tabPanel("Correlation", correlationUI("correlation")),
                       #tabPanel("Segment", page1UI("page1")),
                       tabPanel("Segment", cancellationUI("page2")),
-                      tabPanel("repeatcancel", repeatcancelUI("repeatcancel")),
+                      tabPanel("Repeat Cancels", repeatcancelUI("repeatcancel")),
                       tabPanel("Lead Time vs Cancellations", LeadTimeUI("LeadTime")),
-                      tabPanel("Bookings by Country in World Map", MapUI("Map")),
                       "--------",
                       "Average Daily Rate",
                       tabPanel("Company Wise ADR", companyADRUI("company_adr"))

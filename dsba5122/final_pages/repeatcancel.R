@@ -9,21 +9,13 @@ repeatcancelUI <- function(id){
     ),
     fluidRow(
       column(2,uiOutput(NS(id , "option"))),
-    ),
-    
-    fluidRow(
-      # column(3,plotOutput(NS(id,'count_canceled'))),
       column(10,plotOutput(NS(id,'trend_plot')))
     ),
     
-    fluidRow(
-      column(2,uiOutput(NS(id , "option2"))),
-    ),
     
     fluidRow(
-      # column(3,plotOutput(NS(id,'count_canceled'))),
+      column(2,uiOutput(NS(id , "option2"))),
       column(10, plotOutput(NS(id, 'trend_plot2')))
-      
     )
     
   )

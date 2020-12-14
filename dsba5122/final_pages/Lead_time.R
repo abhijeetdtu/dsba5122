@@ -5,8 +5,9 @@ LeadTimeUI <- function(id){
   
   # Show a plot of the generated distribution
   fluidPage(
+    fluidRow(tags$h3("Total Number of Cancellations by Lead Time")),
     fluidRow(
-      column(2,uiOutput(NS(id,'segment')))
+      column(3,uiOutput(NS(id,'segment')))
     ),
     
     fluidRow(
@@ -18,38 +19,27 @@ LeadTimeServer <- function(id){
   
   moduleServer(id, function(input, output, session) {
     output$segment <- renderUI({
-      selectInput(NS(id , "segment"), "Lead Time" , c(7,30,90,365))
+      selectInput(NS(id , "segment"), "Lead Time Bin Size (in days)" , choices=list(7 , 30,90,365) , selected=7)
     })
+    
     output$plot <- renderPlotly({
-      df <- readr::read_csv('hotels.csv')
-      if(input$segment=='7'){
-        X <- 7
-        
-        
-      } 
-      else if(input$segment=='30'){
-        X<-30
-        
-      }
-      else if(input$segment=='90'){
-        X<-90
-        
-      }
-      else if(input$segment=='365'){
-        X<-365
-        
-      }
       df$Total_Cancelations = sum(df$is_canceled)
-      df$bins <- cut(df$lead_time, breaks=seq(0, 750, X))
+      df$bins <- cut(df$lead_time, breaks=seq(min(df$lead_time), max(df$lead_time), as.numeric(input$segment)))
       new_df = df %>% group_by(bins)%>% summarise(Percent_canceled = (sum(is_canceled)/Total_Cancelations)*100)
       new_df = distinct(new_df)
       # Basic line plot with points
-      g <- ggplot(data=new_df, aes(x=bins, y=Percent_canceled , group=1)) +
-        geom_point(color="blue")+geom_col(width = 0.1)+labs(title = "Lead Time vs Cancellations")+
+      new_df$cum_sum <- cumsum(new_df$Percent_canceled)
+      
+      g <- ggplot(data=new_df, aes(x=bins, y=Percent_canceled )) +
+        geom_point(color="blue")+
+        geom_col(width = 0.1)+
+        geom_line(aes(y=cum_sum) , group=1 ,  linetype='dotted') + 
+        labs(title = "Each Bin's Share of Total Cancelations")+
+        #annotate(geom="text",x=levels(df$bins)[-1] , y=110 ,label="Cum-Sum")+
         theme(axis.text.x = element_text(angle = 90)) +
-        
-        ylab(label="Percent Canceled") + xlab(label="Lead Time") + 
-        scale_x_discrete(labels=seq(X, 750+X, by=X))
+        ylab(label="Percent") + 
+        xlab(label="Lead Time") +
+        theme_minimal()
       g
     })
     

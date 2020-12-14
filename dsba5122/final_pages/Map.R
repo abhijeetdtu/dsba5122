@@ -1,20 +1,19 @@
 # These are the datapoints where there is no adults, children and babies so we will not consider these points
-library(plotly)
-library(countrycode)
+
 MapUI <- function(id){
   # Show a plot of the generated distribution
   fluidPage(
     fluidRow(
-      column(2,uiOutput(NS(id,'hotelsegment')))
-    ),
-    fluidRow(
-      column(2,uiOutput(NS(id,'bookingssegment')))
-    ),
-    fluidRow(
-      column(12,plotlyOutput(NS(id,'plot')))
+      column(2 , fluidRow(
+        fluidRow(uiOutput(NS(id,'hotelsegment'))),
+        fluidRow(uiOutput(NS(id,'bookingssegment'))),
+        fluidRow(checkboxInput(NS(id,'logscale'), "Log Scale", FALSE)),
+      )),
+      column(10,plotlyOutput(NS(id,'plot')))
     )
   )
 }
+
 MapServer <- function(id){
   moduleServer(id, function(input, output, session) {
     output$hotelsegment <- renderUI({
@@ -64,6 +63,10 @@ MapServer <- function(id){
                                                 origin = "iso3c",
                                                 destination = "country.name")
       
+      if(input$logscale){
+        hotelbycountry$n <- log10(hotelbycountry$n)
+      }
+      
       p <- plot_ly(
         hotelbycountry,
         type = "choropleth",
@@ -73,7 +76,7 @@ MapServer <- function(id){
         colorscale = "Reds",
         title = "Total Bookings"
       )
-      g <- layout(p, title = 'Bookings by Countries in World Map',titlefont=list(size=17))
+      g <- layout(p, title = 'Count of Bookings by Countries',titlefont=list(size=17))
       g
     
     })
