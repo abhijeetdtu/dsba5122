@@ -39,10 +39,9 @@ page1Server <- function(id){
       selectInput(NS(id , "segment"), "Segment By" , c("hotel" , "customer_type" , "deposit_type"))
     })
     
-    output$count_canceled <- renderPlot({
+    output$count_canceled <- renderPlotly({
       
       selectedCols <-  c("is_canceled" , input$segment)
-      print(selectedCols)
       canceled <- df %>% 
                     group_by_at(all_of(selectedCols)) %>% 
                     summarise(counts = sum(is_canceled)) %>% 
@@ -76,7 +75,7 @@ page1Server <- function(id){
             group_by_at(all_of(c(input$segment, "arrival_date_year" , "arrival_date_week_number"))) %>% 
             summarize(counts = sum(is_canceled)) %>%
             ggplot( aes_string(x="arrival_date_week_number" ,y="counts" , group=input$segment , color=input$segment ))+
-            geom_line() +
+            geom_line(size=2) +
             facet_wrap(~ arrival_date_year ) +
             theme_light() + 
             xlab("Arrival Week Number") +
@@ -84,7 +83,11 @@ page1Server <- function(id){
             ggtitle("Total Cancelled Bookings Over Each Year")+
             theme(panel.grid.major.x = element_blank(),
                   panel.grid.minor.x = element_blank(),
-                  legend.position = "left")
+                  legend.position = "left")+
+          theme(plot.title = element_text(size = 20, face = "bold")) +
+          theme(axis.text.x = element_text(size = 12, angle = 90, vjust = 0.5)) +
+          theme(axis.text.y = element_text(size = 12, angle = 90, vjust = 0.5)) +
+          theme(axis.title = element_text(size = 16))
       g
       
     })

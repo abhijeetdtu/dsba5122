@@ -54,11 +54,11 @@ ui <- fluidPage(
                       tabPanel("Monthly Bookings", MonthlyBookingsUI("MonthlyHotelBookings")),
                       "---------",
                       "Cancellations",
-                      tabPanel("Correlation", correlationUI("correlation")),
                       #tabPanel("Segment", page1UI("page1")),
-                      tabPanel("Segment", cancellationUI("page2")),
+                      tabPanel("Total Cancellations", cancellationUI("page2")),
                       tabPanel("Repeat Cancels", repeatcancelUI("repeatcancel")),
                       tabPanel("Lead Time vs Cancellations", LeadTimeUI("LeadTime")),
+                      tabPanel("Correlation", correlationUI("correlation")),
                       "--------",
                       "Average Daily Rate",
                       tabPanel("Company Wise ADR", companyADRUI("company_adr"))
