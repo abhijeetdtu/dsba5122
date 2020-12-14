@@ -37,7 +37,7 @@ source("final_pages/company_adr.R")
 source("final_pages/adr_regression.R")
 source("final_pages/repeatcancel.R")
 source("final_pages/Lead_time.R")
-
+source("final_pages/Map.R")
 # Define UI for application that draws a histogram
 ui <- fluidPage(
     theme = shinythemes::shinytheme("sandstone"),
@@ -53,10 +53,12 @@ ui <- fluidPage(
                       #tabPanel("Segment", page1UI("page1")),
                       tabPanel("Segment", cancellationUI("page2")),
                       tabPanel("repeatcancel", repeatcancelUI("repeatcancel")),
+                      tabPanel("Lead Time vs Cancellations", LeadTimeUI("LeadTime")),
+                      tabPanel("Bookings by Country in World Map", MapUI("Map")),
                       "--------",
                       "Average Daily Rate",
-                      tabPanel("Company Wise ADR", companyADRUI("company_adr")),
-                      tabPanel("Lead Time vs Cancellations", LeadTimeUI("LeadTime"))
+                      tabPanel("Company Wise ADR", companyADRUI("company_adr"))
+                     
                ),
                navbarMenu("Analytical Models",
                     tabPanel("Tree", decisionTreeUI("dtree")),
@@ -82,6 +84,7 @@ server <- function(input, output) {
     adrRegressionUIServer("adr_regression")
     repeatcancelServer("repeatcancel")
     LeadTimeServer("LeadTime")
+    MapServer("Map")
 }
 
 # Run the application 
