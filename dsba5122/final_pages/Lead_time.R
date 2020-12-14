@@ -39,7 +39,7 @@ LeadTimeServer <- function(id){
         theme_minimal()+
         theme(axis.text.x = element_text(angle = 90)) +
         ylab(label="Percent") + 
-        xlab(label="Lead Time") +
+        xlab(label="Lead Time")
         
       g
     })
